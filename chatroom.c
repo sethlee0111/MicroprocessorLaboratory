@@ -31,6 +31,9 @@ void Import_Chatroom(void) {
 	String_GLCD(21, 4, "The Chatroom");
 	String_GLCD(30, 4, "Microprocessor");
 	String_GLCD(39, 4, "--------------------");
+
+	Draw_Logo();
+
 	//String_GLCD(52, 4, "Say Something!");
 }
 
@@ -119,7 +122,7 @@ void Button_Pushed(char key) {
 	Erase_GLCD(cursorLeftUpperX, cursorLeftUpperX + 6, cursorLeftUpperY, cursorLeftUpperY + 4);
 	String_GLCD(cursorLeftUpperX, cursorLeftUpperY, cursorLetter);
 	Tim0.tflg1.byte = 0x20;	//	Timer 5 interrupt flag clear
-	if((key > 0x30 && key <= 0x39) || key == 0x20) {// if the key is number,
+	if((key >= 0x30 && key <= 0x39) || key == 0x20) {// if the key is number,
 		Tim0.tc[5].word = Tim0.tcnt.word + 10000;	// immediate cursor change
 		Tim0.tie.byte |= 0x20;
 		Tim0.tflg1.byte = 0x20;	//	Timer 5 interrupt flag clear

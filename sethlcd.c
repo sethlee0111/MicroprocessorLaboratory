@@ -181,6 +181,26 @@ void String_Buffer(unsigned char xPos, unsigned char yPos, char* strArr) {
 		k++; 	// space for space
 	}
 }
+
+void Bitmap_Buffer5X7(unsigned char page, unsigned char yPos, char* bitmapBuf) {
+	char j;
+		for(j=0; j<5; j++) {
+			buffer[page][j + yPos] = bitmapBuf[j];
+		}
+
+}
+void Draw_Logo(void) {
+unsigned char i;
+for(i=0; i< 3; i++) {
+	Bitmap_Buffer5X7(2, 91+i*10, bitmap2);
+	Bitmap_Buffer5X7(3, 91+i*10, bitmap2);
+	Bitmap_Buffer5X7(2, 96+i*10, bitmap1);
+	Bitmap_Buffer5X7(3, 96+i*10, bitmap1);
+}
+	Bitmap_Buffer5X7(2, 91+i*10, bitmap2);
+	Bitmap_Buffer5X7(3, 91+i*10, bitmap2);
+	Buffer_Update_GLCD(2, 3, 86, 125);
+}
 /**----------------------------------------------
 *	Update Buffer in a designated area
 *	@param page boundary, Y boundary

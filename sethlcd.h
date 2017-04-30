@@ -65,6 +65,8 @@
 /* GLOBALS */
 static int currentPage, currentY; // current position of x and y on GLCD
 static unsigned char buffer[8][128]; //buffer for screen. each Byte represent one 8*1 column data
+static unsigned char bitmap1[5] = {0xBD, 0xa9, 0xa1, 0x81, 0xFF};
+static unsigned char bitmap2[5] = {0xFF, 0x81, 0xa1, 0xa9, 0xBD};
 /*I took this from web */
 static unsigned char font[95][5] = {	                /* 5x7 ASCII character font */
 	{0x00, 0x00, 0x00, 0x00, 0x00},		// font for Microprocessor class 0x20 space
@@ -180,6 +182,7 @@ void Buffer_Update_GLCD(unsigned char lowerPage, unsigned char upperPage, unsign
 void String_Buffer(unsigned char xPos, unsigned char yPos, char* strArr);
 void Clear_Buffer(unsigned char lowerX, unsigned char upperX, unsigned char lowerY, unsigned char upperY);
 void Draw_Direct_Vline(unsigned char yPos, unsigned char lowerX, unsigned char upperX);
+void Bitmap_Buffer5X7(unsigned char page, unsigned char yPos, char* bitmapBuf);
 /* FUNCTIONS for users - for broad use */
 /* naming order : "ACTION"_GLCD  */
 void Import_GLCD(void);
@@ -190,6 +193,7 @@ void String_GLCD(unsigned char xPos, unsigned char yPos, char* strArr);
 void Draw_Vline(unsigned char yPos, unsigned char lowerX, unsigned char upperX);
 void Draw_Hline(unsigned char xPos, unsigned char lowerY, unsigned char upperY);
 void Erase_GLCD(unsigned char lowerX, unsigned char upperX, unsigned char lowerY, unsigned char upperY);
+void Draw_Logo(void);
 
 
 #endif
