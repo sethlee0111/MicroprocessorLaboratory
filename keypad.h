@@ -1,3 +1,13 @@
+/** Chatroom control codes for Microprocessor Laboratory
+	2017 Spring Semester. Lee Sang Su 2011314425 SKKU
+	github.com/sethlee0111
+
+	Based on the code of EMBEDDED SYSTEMS LAB of SKKU 2009
+
+	@author sethlee
+	@version 1.0
+*/
+
 #ifndef KEYPAD_H
 #define KEYPAD_H
 

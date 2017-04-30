@@ -3,7 +3,7 @@
 	github.com/sethlee0111
 
 	@author sethlee
-	@version 0.1
+	@version 1.1
 */
 #include "chatroom.h"
 
@@ -34,6 +34,12 @@ void Import_Chatroom(void) {
 	//String_GLCD(52, 4, "Say Something!");
 }
 
+/**----------------------------------------------
+*	Initialization Timer for a cursor
+*	
+*	@author	sethlee
+*	@todo	add more stuff
+*----------------------------------------------*/
 void Init_Cursor_Timer(void) {
 	Tim0.tios.byte |= 0x30;	// C4I, C5I timer output capture
 
@@ -101,6 +107,13 @@ void Init_Message(void) {
 	msg[0].read = "_____________________";
 }
 */
+
+/**----------------------------------------------
+*	When a keypad is pushed, this is invoked
+*	
+*	@author	sethlee
+*	@todo	add more stuff
+*----------------------------------------------*/
 void Button_Pushed(char key) {
 	cursorLetter[0] = key;
 	Erase_GLCD(cursorLeftUpperX, cursorLeftUpperX + 6, cursorLeftUpperY, cursorLeftUpperY + 4);
@@ -116,7 +129,12 @@ void Button_Pushed(char key) {
 	}
 
 }
-
+/**----------------------------------------------
+*	put character in a message
+*	
+*	@author	sethlee
+*	@todo	add more stuff
+*----------------------------------------------*/
 void Message_Put_Char(char data) {
 	if(data == 0x0D){
 	  	msg[msgIndex].read[readIndex++] = '\0';
@@ -136,6 +154,12 @@ void Message_Put_Char(char data) {
 // Erase_GLCD(39 - (i * 9), 39 - (i * 9) + 8 , 4 , 123);
 // String_GLCD(39 - (i * 9), 4, msg[i].read);
 
+/**----------------------------------------------
+*	Display all 5 rows of Messages
+*	
+*	@author	sethlee
+*	@todo	add more stuff
+*----------------------------------------------*/
 void Display_Messages(void) {
 	char i;
 	if(initialMsgIndex < 5) {

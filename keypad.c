@@ -1,18 +1,43 @@
+/** Chatroom control codes for Microprocessor Laboratory
+	2017 Spring Semester. Lee Sang Su 2011314425 SKKU
+	github.com/sethlee0111
+
+	Based on the code of EMBEDDED SYSTEMS LAB of SKKU 2009
+
+	@author sethlee
+	@version 1.0
+*/
+
 #include "keypad.h"
 
 int rowDataSamples = 0;
 
+/**----------------------------------------------
+*	Initialization for Keypad //
+*	
+*	@author	sethlee
+*----------------------------------------------*/
 void Init_Keypad(void) {
   Pim.ddrh.byte = 0xf0; // PORTH AllOutput Setting
   Pim.pieh.byte = 0x07;		// Column만 Interrupt로 이용
   Pim.ppsh.byte = 0x00;
   
 }
-
+/**----------------------------------------------
+*	Delay function for Keypad //
+*	
+*	@author	sethlee
+*----------------------------------------------*/
 void m_delay(char x) {
   char i;
   for(i=0;i<x;i++); 
 }
+
+/**----------------------------------------------
+*	Checking Keypad : should be iterating periodically//
+*	
+*	EMBEDDED SYSTEMS LAB
+*----------------------------------------------*/
 void Keypad_Check(void) {
 
   KEYPAD_CHECK = FIRST_ROW;
@@ -30,6 +55,12 @@ void Init_Key(void) {
   Key = 0;
 }
 
+/**----------------------------------------------
+*	Interrupt Handler when the key is pressed
+*	Interrupt is for the column
+*
+*	@author	sethlee
+*----------------------------------------------*/
 void PortH_Interrupt_handler (void){
    unsigned char keySource = (~(KEYPAD_CHECK)) >> 4; // row numbers: 0b 2341
    /* Sampler for the button */
@@ -46,6 +77,11 @@ void PortH_Interrupt_handler (void){
 	Pim.pifh.byte = 0x01 + 0x02 + 0x04;
 }
 
+/**----------------------------------------------
+*	Determine which key is pressed
+*
+*	@author	sethlee
+*----------------------------------------------*/
 void Pressed_Key(void) {
 	char i;
 	char maxRowIndex = 0;
