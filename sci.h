@@ -1,4 +1,4 @@
-#ifndef SCI_H        /*prevent duplicated includes*/
+#ifndef SCI_H       
 #define SCI_H
 
 

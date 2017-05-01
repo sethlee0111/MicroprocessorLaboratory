@@ -84,7 +84,6 @@ void Timer5_Interrupt(void) {
 			//	first, we make sure to put character on current cursor instead of cursor box
 			Erase_GLCD(cursorLeftUpperX, cursorLeftUpperX + 6, cursorLeftUpperY, cursorLeftUpperY + 4);
 			String_GLCD(cursorLeftUpperX, cursorLeftUpperY, cursorLetter);
-
 			//write to sci
 			if(cursorLetter[0] == '\0')	{
 				sendMsg[sendMsgIndex++] = '\n';
